@@ -11,7 +11,7 @@ public class MyNetworkManager : NetworkManager {
 	}
 
 	public void MyStartHost(){
-		Debug.Log (Time.timeSinceLevelLoad);
+		Debug.Log (Time.timeSinceLevelLoad+"starting host");
 		StartHost ();
 	}
 	
@@ -21,6 +21,13 @@ public class MyNetworkManager : NetworkManager {
 	}
 
 	public override void OnStartHost(){
-		Debug.Log (Time.timeSinceLevelLoad);
+		Debug.Log (Time.timeSinceLevelLoad+"host started");
+	}
+	public override void OnStartClient(NetworkClient myClient){
+		Debug.Log (Time.timeSinceLevelLoad+"client start req");
+	}
+
+	public override void OnClientConnect(NetworkConnection conn){
+		Debug.Log (Time.timeSinceLevelLoad + "client connected to ip :" + conn.address);
 	}
 }
